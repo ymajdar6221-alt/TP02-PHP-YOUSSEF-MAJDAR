@@ -1,0 +1,25 @@
+
+<?php
+if (
+    !isset($_GET["nom"], $_GET["prenom"], $_GET["groupe"])
+) {
+    exit("Veuillez envoyer le formulaire GET.");
+}
+
+$nom = trim($_GET["nom"]);
+$prenom = trim($_GET["prenom"]);
+$groupe = trim($_GET["groupe"]);
+
+if ($nom === "" || $prenom === "" || $groupe === "") {
+    exit("Erreur : tous les champs sont obligatoires.");
+}
+
+if (!in_array($groupe, ["G1", "G2", "G3", "G4"], true)) {
+    exit("Groupe invalide.");
+}
+
+echo "<h1>Bienvenue</h1>";
+echo "Nom : " . htmlspecialchars($nom) . "<br>";
+echo "Prénom : " . htmlspecialchars($prenom) . "<br>";
+echo "Groupe : " . htmlspecialchars($groupe) . "<br>";
+?>
